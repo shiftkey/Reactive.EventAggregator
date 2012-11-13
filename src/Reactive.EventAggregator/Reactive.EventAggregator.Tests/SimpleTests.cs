@@ -63,5 +63,23 @@ namespace Reactive.EventAggregator.Tests
             // assert
             eventWasRaised.ShouldBe(true);
         }
+
+        [Fact]
+        public void testing_selective_subscribe_ignored()
+        {
+            // arrange
+            var eventWasRaised = false;
+            var eventPublisher = new EventAggregator();
+
+            // act
+            eventPublisher.GetEvent<SampleEvent>()
+                .Where(se => se.Status != 1)
+                .Subscribe(se => eventWasRaised = true);
+
+            eventPublisher.Publish(new SampleEvent { Status = 1 });
+
+            // assert
+            eventWasRaised.ShouldBe(false);
+        }
     }
 }
