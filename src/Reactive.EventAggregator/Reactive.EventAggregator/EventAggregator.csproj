@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collection.cs" />
-    <Compile Include="IEventPublisher.cs" />
-    <Compile Include="EventPublisher.cs" />
+    <Compile Include="IEventAggregator.cs" />
+    <Compile Include="EventAggregator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

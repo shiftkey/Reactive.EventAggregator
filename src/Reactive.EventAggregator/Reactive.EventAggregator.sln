@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactive.EventAggregator", "Reactive.EventAggregator\Reactive.EventAggregator.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "Reactive.EventAggregator\EventAggregator.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using System.Reactive.Subjects;
 
 namespace Reactive.EventAggregator
 {
-    public class EventPublisher : IEventPublisher
+    public class EventAggregator : IEventAggregator
     {
         readonly ThreadSafeDictionary<Type, object> subjects = new ThreadSafeDictionary<Type, object>();
 

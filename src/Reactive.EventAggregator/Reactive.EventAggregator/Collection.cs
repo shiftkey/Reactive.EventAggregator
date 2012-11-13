@@ -5,362 +5,359 @@ using System.Threading;
 
 // source: http://devplanet.com/blogs/brianr/archive/2008/09/26/thread-safe-dictionary-in-net.aspx
 
-public interface IThreadSafeDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+namespace Reactive.EventAggregator
 {
-    /// <summary>
-    /// Merge is similar to the SQL merge or upsert statement.  
-    /// </summary>
-    /// <param name="key">Key to lookup</param>
-    /// <param name="newValue">New Value</param>
-    void MergeSafe(TKey key, TValue newValue);
-
-
-    /// <summary>
-    /// This is a blind remove. Prevents the need to check for existence first.
-    /// </summary>
-    /// <param name="key">Key to Remove</param>
-    void RemoveSafe(TKey key);
-}
-
-
-
-public class ThreadSafeDictionary<TKey, TValue> : IThreadSafeDictionary<TKey, TValue>
-{
-    //This is the internal dictionary that we are wrapping
-    IDictionary<TKey, TValue> dict = new Dictionary<TKey, TValue>();
-
-
-    
-    ReaderWriterLockSlim dictionaryLock = Locks.GetLockInstance(LockRecursionPolicy.NoRecursion); //setup the lock;
-
-
-    /// <summary>
-    /// This is a blind remove. Prevents the need to check for existence first.
-    /// </summary>
-    /// <param name="key">Key to remove</param>
-    public void RemoveSafe(TKey key)
+    internal interface IThreadSafeDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        using (new ReadLock(this.dictionaryLock))
+        /// <summary>
+        /// Merge is similar to the SQL merge or upsert statement.  
+        /// </summary>
+        /// <param name="key">Key to lookup</param>
+        /// <param name="newValue">New Value</param>
+        void MergeSafe(TKey key, TValue newValue);
+
+
+        /// <summary>
+        /// This is a blind remove. Prevents the need to check for existence first.
+        /// </summary>
+        /// <param name="key">Key to Remove</param>
+        void RemoveSafe(TKey key);
+    }
+
+    internal class ThreadSafeDictionary<TKey, TValue> : IThreadSafeDictionary<TKey, TValue>
+    {
+        //This is the internal dictionary that we are wrapping
+        private IDictionary<TKey, TValue> dict = new Dictionary<TKey, TValue>();
+
+
+        private ReaderWriterLockSlim dictionaryLock = Locks.GetLockInstance(LockRecursionPolicy.NoRecursion);
+                                     //setup the lock;
+
+
+        /// <summary>
+        /// This is a blind remove. Prevents the need to check for existence first.
+        /// </summary>
+        /// <param name="key">Key to remove</param>
+        public void RemoveSafe(TKey key)
         {
-            if (this.dict.ContainsKey(key))
+            using (new ReadLock(this.dictionaryLock))
             {
-                using (new WriteLock(this.dictionaryLock))
+                if (this.dict.ContainsKey(key))
                 {
-                    this.dict.Remove(key);
+                    using (new WriteLock(this.dictionaryLock))
+                    {
+                        this.dict.Remove(key);
+                    }
                 }
             }
         }
-    }
 
 
-    /// <summary>
-    /// Merge does a blind remove, and then add.  Basically a blind Upsert.  
-    /// </summary>
-    /// <param name="key">Key to lookup</param>
-    /// <param name="newValue">New Value</param>
-    public void MergeSafe(TKey key, TValue newValue)
-    {
-        using (new WriteLock(this.dictionaryLock)) // take a writelock immediately since we will always be writing
+        /// <summary>
+        /// Merge does a blind remove, and then add.  Basically a blind Upsert.  
+        /// </summary>
+        /// <param name="key">Key to lookup</param>
+        /// <param name="newValue">New Value</param>
+        public void MergeSafe(TKey key, TValue newValue)
         {
-            if (this.dict.ContainsKey(key))
+            using (new WriteLock(this.dictionaryLock)) // take a writelock immediately since we will always be writing
             {
-                this.dict.Remove(key);
-            }
+                if (this.dict.ContainsKey(key))
+                {
+                    this.dict.Remove(key);
+                }
 
 
-            this.dict.Add(key, newValue);
-        }
-    }
-
-
-    public virtual bool Remove(TKey key)
-    {
-        using (new WriteLock(this.dictionaryLock))
-        {
-            return this.dict.Remove(key);
-        }
-    }
-
-
-    public virtual bool ContainsKey(TKey key)
-    {
-        using (new ReadOnlyLock(this.dictionaryLock))
-        {
-            return this.dict.ContainsKey(key);
-        }
-    }
-
-
-    public virtual bool TryGetValue(TKey key, out TValue value)
-    {
-        using (new ReadOnlyLock(this.dictionaryLock))
-        {
-            return this.dict.TryGetValue(key, out value);
-        }
-    }
-
-
-    public virtual TValue this[TKey key]
-    {
-        get
-        {
-            using (new ReadOnlyLock(this.dictionaryLock))
-            {
-                return this.dict[key];
+                this.dict.Add(key, newValue);
             }
         }
-        set
+
+
+        public virtual bool Remove(TKey key)
         {
             using (new WriteLock(this.dictionaryLock))
             {
-                this.dict[key] = value;
+                return this.dict.Remove(key);
             }
         }
-    }
 
 
-    public virtual ICollection<TKey> Keys
-    {
-        get
+        public virtual bool ContainsKey(TKey key)
         {
             using (new ReadOnlyLock(this.dictionaryLock))
             {
-                return new List<TKey>(this.dict.Keys);
+                return this.dict.ContainsKey(key);
             }
         }
-    }
 
 
-    public virtual ICollection<TValue> Values
-    {
-        get
+        public virtual bool TryGetValue(TKey key, out TValue value)
         {
             using (new ReadOnlyLock(this.dictionaryLock))
             {
-                return new List<TValue>(this.dict.Values);
+                return this.dict.TryGetValue(key, out value);
             }
         }
-    }
 
 
-    public virtual void Clear()
-    {
-        using (new WriteLock(this.dictionaryLock))
+        public virtual TValue this[TKey key]
         {
-            this.dict.Clear();
+            get
+            {
+                using (new ReadOnlyLock(this.dictionaryLock))
+                {
+                    return this.dict[key];
+                }
+            }
+            set
+            {
+                using (new WriteLock(this.dictionaryLock))
+                {
+                    this.dict[key] = value;
+                }
+            }
         }
-    }
 
 
-    public virtual int Count
-    {
-        get
+        public virtual ICollection<TKey> Keys
+        {
+            get
+            {
+                using (new ReadOnlyLock(this.dictionaryLock))
+                {
+                    return new List<TKey>(this.dict.Keys);
+                }
+            }
+        }
+
+
+        public virtual ICollection<TValue> Values
+        {
+            get
+            {
+                using (new ReadOnlyLock(this.dictionaryLock))
+                {
+                    return new List<TValue>(this.dict.Values);
+                }
+            }
+        }
+
+
+        public virtual void Clear()
+        {
+            using (new WriteLock(this.dictionaryLock))
+            {
+                this.dict.Clear();
+            }
+        }
+
+
+        public virtual int Count
+        {
+            get
+            {
+                using (new ReadOnlyLock(this.dictionaryLock))
+                {
+                    return this.dict.Count;
+                }
+            }
+        }
+
+
+        public virtual bool Contains(KeyValuePair<TKey, TValue> item)
         {
             using (new ReadOnlyLock(this.dictionaryLock))
             {
-                return this.dict.Count;
+                return this.dict.Contains(item);
             }
         }
-    }
 
 
-    public virtual bool Contains(KeyValuePair<TKey, TValue> item)
-    {
-        using (new ReadOnlyLock(this.dictionaryLock))
+        public virtual void Add(KeyValuePair<TKey, TValue> item)
         {
-            return this.dict.Contains(item);
+            using (new WriteLock(this.dictionaryLock))
+            {
+                this.dict.Add(item);
+            }
         }
-    }
 
 
-    public virtual void Add(KeyValuePair<TKey, TValue> item)
-    {
-        using (new WriteLock(this.dictionaryLock))
+        public virtual void Add(TKey key, TValue value)
         {
-            this.dict.Add(item);
+            using (new WriteLock(this.dictionaryLock))
+            {
+                this.dict.Add(key, value);
+            }
         }
-    }
 
 
-    public virtual void Add(TKey key, TValue value)
-    {
-        using (new WriteLock(this.dictionaryLock))
+        public virtual bool Remove(KeyValuePair<TKey, TValue> item)
         {
-            this.dict.Add(key, value);
+            using (new WriteLock(this.dictionaryLock))
+            {
+                return this.dict.Remove(item);
+            }
         }
-    }
 
 
-    public virtual bool Remove(KeyValuePair<TKey, TValue> item)
-    {
-        using (new WriteLock(this.dictionaryLock))
-        {
-            return this.dict.Remove(item);
-        }
-    }
-
-
-    public virtual void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
-    {
-        using (new ReadOnlyLock(this.dictionaryLock))
-        {
-            this.dict.CopyTo(array, arrayIndex);
-        }
-    }
-
-
-    public virtual bool IsReadOnly
-    {
-        get
+        public virtual void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
             using (new ReadOnlyLock(this.dictionaryLock))
             {
-                return this.dict.IsReadOnly;
+                this.dict.CopyTo(array, arrayIndex);
             }
+        }
+
+
+        public virtual bool IsReadOnly
+        {
+            get
+            {
+                using (new ReadOnlyLock(this.dictionaryLock))
+                {
+                    return this.dict.IsReadOnly;
+                }
+            }
+        }
+
+
+        public virtual IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+        {
+            throw new NotSupportedException(
+                "Cannot enumerate a threadsafe dictionary.  Instead, enumerate the keys or values collection");
+        }
+
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotSupportedException(
+                "Cannot enumerate a threadsafe dictionary.  Instead, enumerate the keys or values collection");
         }
     }
 
-
-    public virtual IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+    internal static class Locks
     {
-        throw new NotSupportedException("Cannot enumerate a threadsafe dictionary.  Instead, enumerate the keys or values collection");
+        public static void GetReadLock(ReaderWriterLockSlim locks)
+        {
+            bool lockAcquired = false;
+            while (!lockAcquired)
+                lockAcquired = locks.TryEnterUpgradeableReadLock(1);
+        }
+
+
+        public static void GetReadOnlyLock(ReaderWriterLockSlim locks)
+        {
+            bool lockAcquired = false;
+            while (!lockAcquired)
+                lockAcquired = locks.TryEnterReadLock(1);
+        }
+
+
+        public static void GetWriteLock(ReaderWriterLockSlim locks)
+        {
+            bool lockAcquired = false;
+            while (!lockAcquired)
+                lockAcquired = locks.TryEnterWriteLock(1);
+        }
+
+
+        public static void ReleaseReadOnlyLock(ReaderWriterLockSlim locks)
+        {
+            if (locks.IsReadLockHeld)
+                locks.ExitReadLock();
+        }
+
+
+        public static void ReleaseReadLock(ReaderWriterLockSlim locks)
+        {
+            if (locks.IsUpgradeableReadLockHeld)
+                locks.ExitUpgradeableReadLock();
+        }
+
+
+        public static void ReleaseWriteLock(ReaderWriterLockSlim locks)
+        {
+            if (locks.IsWriteLockHeld)
+                locks.ExitWriteLock();
+        }
+
+
+        public static void ReleaseLock(ReaderWriterLockSlim locks)
+        {
+            ReleaseWriteLock(locks);
+            ReleaseReadLock(locks);
+            ReleaseReadOnlyLock(locks);
+        }
+
+
+        public static ReaderWriterLockSlim GetLockInstance()
+        {
+            return GetLockInstance(LockRecursionPolicy.SupportsRecursion);
+        }
+
+
+        public static ReaderWriterLockSlim GetLockInstance(LockRecursionPolicy recursionPolicy)
+        {
+            return new ReaderWriterLockSlim(recursionPolicy);
+        }
     }
 
-
-    IEnumerator IEnumerable.GetEnumerator()
+    internal abstract class BaseLock : IDisposable
     {
-        throw new NotSupportedException("Cannot enumerate a threadsafe dictionary.  Instead, enumerate the keys or values collection");
-    }
-}
+        protected ReaderWriterLockSlim _Locks;
 
 
-public static class Locks
-{
-    public static void GetReadLock(ReaderWriterLockSlim locks)
-    {
-        bool lockAcquired = false;
-        while (!lockAcquired)
-            lockAcquired = locks.TryEnterUpgradeableReadLock(1);
+        public BaseLock(ReaderWriterLockSlim locks)
+        {
+            _Locks = locks;
+        }
+
+
+        public abstract void Dispose();
     }
 
-
-    public static void GetReadOnlyLock(ReaderWriterLockSlim locks)
+    internal class ReadLock : BaseLock
     {
-        bool lockAcquired = false;
-        while (!lockAcquired)
-            lockAcquired = locks.TryEnterReadLock(1);
+        public ReadLock(ReaderWriterLockSlim locks)
+            : base(locks)
+        {
+            Locks.GetReadLock(this._Locks);
+        }
+
+
+        public override void Dispose()
+        {
+            Locks.ReleaseReadLock(this._Locks);
+        }
     }
 
-
-    public static void GetWriteLock(ReaderWriterLockSlim locks)
+    internal class ReadOnlyLock : BaseLock
     {
-        bool lockAcquired = false;
-        while (!lockAcquired)
-            lockAcquired = locks.TryEnterWriteLock(1);
+        public ReadOnlyLock(ReaderWriterLockSlim locks)
+            : base(locks)
+        {
+            Locks.GetReadOnlyLock(this._Locks);
+        }
+
+
+        public override void Dispose()
+        {
+            Locks.ReleaseReadOnlyLock(this._Locks);
+        }
     }
 
-
-    public static void ReleaseReadOnlyLock(ReaderWriterLockSlim locks)
+    internal class WriteLock : BaseLock
     {
-        if (locks.IsReadLockHeld)
-            locks.ExitReadLock();
-    }
+        public WriteLock(ReaderWriterLockSlim locks)
+            : base(locks)
+        {
+            Locks.GetWriteLock(this._Locks);
+        }
 
 
-    public static void ReleaseReadLock(ReaderWriterLockSlim locks)
-    {
-        if (locks.IsUpgradeableReadLockHeld)
-            locks.ExitUpgradeableReadLock();
-    }
-
-
-    public static void ReleaseWriteLock(ReaderWriterLockSlim locks)
-    {
-        if (locks.IsWriteLockHeld)
-            locks.ExitWriteLock();
-    }
-
-
-    public static void ReleaseLock(ReaderWriterLockSlim locks)
-    {
-        ReleaseWriteLock(locks);
-        ReleaseReadLock(locks);
-        ReleaseReadOnlyLock(locks);
-    }
-
-
-    public static ReaderWriterLockSlim GetLockInstance()
-    {
-        return GetLockInstance(LockRecursionPolicy.SupportsRecursion);
-    }
-
-
-    public static ReaderWriterLockSlim GetLockInstance(LockRecursionPolicy recursionPolicy)
-    {
-        return new ReaderWriterLockSlim(recursionPolicy);
-    }
-}
-
-
-public abstract class BaseLock : IDisposable
-{
-    protected ReaderWriterLockSlim _Locks;
-
-
-    public BaseLock(ReaderWriterLockSlim locks)
-    {
-        _Locks = locks;
-    }
-
-
-    public abstract void Dispose();
-}
-
-
-public class ReadLock : BaseLock
-{
-    public ReadLock(ReaderWriterLockSlim locks)
-        : base(locks)
-    {
-        Locks.GetReadLock(this._Locks);
-    }
-
-
-    public override void Dispose()
-    {
-        Locks.ReleaseReadLock(this._Locks);
-    }
-}
-
-
-public class ReadOnlyLock : BaseLock
-{
-    public ReadOnlyLock(ReaderWriterLockSlim locks)
-        : base(locks)
-    {
-        Locks.GetReadOnlyLock(this._Locks);
-    }
-
-
-    public override void Dispose()
-    {
-        Locks.ReleaseReadOnlyLock(this._Locks);
-    }
-}
-
-
-public class WriteLock : BaseLock
-{
-    public WriteLock(ReaderWriterLockSlim locks)
-        : base(locks)
-    {
-        Locks.GetWriteLock(this._Locks);
-    }
-
-
-    public override void Dispose()
-    {
-        Locks.ReleaseWriteLock(this._Locks);
+        public override void Dispose()
+        {
+            Locks.ReleaseWriteLock(this._Locks);
+        }
     }
 }
-
