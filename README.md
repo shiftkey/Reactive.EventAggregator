@@ -13,6 +13,10 @@ Three reasons:
 
 ### Usage
 
+To install it, just run this from the Package Manager Console:
+
+    Install-Package Reactive.EventAggregator
+
 Here's some samples:
 
 Subscribing to an event
