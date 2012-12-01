@@ -11,6 +11,58 @@ Three reasons:
  - It should be on NuGet
  - Using it as a demonstration of Portable Class Libaries and targetting different platforms from the one codebase.
 
+### Usage
+
+Here's some samples:
+
+Subscribing to an event
+
+    // arrange
+    var eventWasRaised = false;
+    var eventPublisher = new EventAggregator();
+
+    // act
+    eventPublisher.GetEvent<SampleEvent>()
+        .Subscribe(se => eventWasRaised = true);
+
+    eventPublisher.Publish(new SampleEvent());
+    
+    // assert
+    eventWasRaised.ShouldBe(true);
+
+Disposing of the event
+
+	// arrange
+    var eventWasRaised = false;
+    var eventPublisher = new EventAggregator();
+
+    // act
+    var subscription = eventPublisher.GetEvent<SampleEvent>()
+                                     .Subscribe(se => eventWasRaised = true);
+
+    subscription.Dispose();
+    eventPublisher.Publish(new SampleEvent());
+
+    // assert
+    eventWasRaised.ShouldBe(false);
+
+Selectively subscribing to an event
+
+    // arrange
+    var eventWasRaised = false;
+    var eventPublisher = new EventAggregator();
+
+    // act
+    eventPublisher.GetEvent<SampleEvent>()
+        .Where(se => se.Status == 1)
+        .Subscribe(se => eventWasRaised = true);
+
+    eventPublisher.Publish(new SampleEvent { Status = 1 });
+
+    // assert
+    eventWasRaised.ShouldBe(true);
+
+
 ### Some other notes
 
 The initial blog post used a ConcurrentDictionary to manage internal observables. This works excellently for the .NET 4+ but does not allow for portability to other platforms. So I switched it out for a ThreadSafeDictionary from [this post](http://devplanet.com/blogs/brianr/archive/2008/09/26/thread-safe-dictionary-in-net.aspx) and started exploring how far I could push it.
