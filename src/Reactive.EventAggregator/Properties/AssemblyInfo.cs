@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Reactive.EventAggregator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A portable EventAggregator based on Rx for .NET 4.5, WP8 and Windows Store")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("José F. Romaniello, Brendan Forster")]
 [assembly: AssemblyProduct("Reactive.EventAggregator")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
