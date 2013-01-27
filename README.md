@@ -22,14 +22,13 @@ I use this project as an excuse to investigate how to use PCL with NuGet, but hi
 
 Yes, NuGet supports installing packages into PCL projects. 
 
-No, not all possible permutations of profiles.
-
-At the moment it is limited to these profiles:
+While the NuGet docs only mention two profiles, I've seen at least three different ones in the wild:
 
  - `portable-windows8+net45` - a small profile encompassing  the modern APIs
  - `portable-sl4+wp71+windows8` - the biggest range of profiles, and thus the smallest set of available APIs
+ - `portable-win+net40+sl50+wp8` - this is what the Autofac 3.0 beta supports
 
-Why does this matter? Because if you try and install something from NuGet into a PCL project, you'll probably see an error like this:
+Why does this matter? Because if you try and install something from NuGet into a PCL project, you may see an error like this:
 
     Could not install package 'Rx-Interfaces 2.0.21114'. You are trying to install this package into a project that targets 
     'portable-win+net45+sl50+wp80', but the package does not contain any assembly references or content files that are 
