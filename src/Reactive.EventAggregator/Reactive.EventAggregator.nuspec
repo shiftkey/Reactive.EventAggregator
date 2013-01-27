@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Reactive.EventAggregator</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>Reactive.EventAggregator</title>
     <authors>José F. Romaniello, Brendan Forster</authors>
     <owners>Brendan Forster</owners>
