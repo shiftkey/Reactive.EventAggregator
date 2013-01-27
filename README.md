@@ -2,14 +2,13 @@
 
 This is an update of a blog post from José F. Romaniello about using Reactive Extensions to implement an event aggregator. [source](http://joseoncode.com/2010/04/29/event-aggregator-with-reactive-extensions/)
 
-
 ### Why bring it back?
 
 Three reasons:
 
  - I want a lean, mean event aggregator for apps - without taking a dependency on an existing framework
  - It should be on NuGet
- - Using it as a demonstration of Portable Class Libaries and targetting different platforms from the one codebase.
+ - Demonstrating Portable Class Libaries and targetting different platforms from one codebase
 
 ### Portable Class Libraries And Upstream Dependencies
 
@@ -17,35 +16,35 @@ I use this project as an excuse to investigate how to use PCL with NuGet, but hi
 
 So `Rx-Linq` is a dependency for this package. If you look inside the package for Rx-Linq you see it supports these profiles:
 
- - Net40
- - Net45
- - Portable-Net45-WinRT45
- - SL4-WindowsPhone71
- - SL5
- - WinRT45
+ - `Net40`
+ - `Net45`
+ - `Portable-Net45-WinRT45`
+ - `SL4-WindowsPhone71`
+ - `SL5`
+ - `WinRT45`
 
-And while NuGet supports installing packages into PCL profiles, it is limited to these profiles:
+And while NuGet supports installing packages into PCL projects, it is limited to these profiles:
 
- - portable-windows8+net45 - a small profile encompassing  the modern APIs
- - portable-sl4+wp71+windows8 - the biggest range of profiles, and thus the smallest set of available APIs
+ - `portable-windows8+net45` - a small profile encompassing  the modern APIs
+ - `portable-sl4+wp71+windows8` - the biggest range of profiles, and thus the smallest set of available APIs
 
-As Rx-Linq only has a library for the first profile, we need to adhere to that profile too.
+As `Rx-Linq` doesn't support the second profile, we cannot provide support for both PCL profiles.
 
-So this becomes my profile structure:
+So the solution structure becomes:
 
- - Portable-Net45-WinRT45
- - Net40
- - SL4-WindowsPhone71
- - SL5
+ - `Portable-Net45-WinRT45`
+ - `Net40`
+ - `SL4-WindowsPhone71`
+ - `SL5`
 
 Which generates these profiles:
 
- - Net40
- - Net45 (reusing portable profile)
- - Portable-Net45-WinRT45
- - SL4-WindowsPhone71
- - SL5
- - WinRT45 (reusing portable profile)
+ - `Net40`
+ - `Net45` (reusing portable profile)
+ - `Portable-Net45-WinRT45`
+ - `SL4-WindowsPhone71`
+ - `SL5`
+ - `WinRT45` (reusing portable profile)
 
 And that's it!
 
@@ -104,5 +103,3 @@ Here's some samples:
 
     // assert
     eventWasRaised.ShouldBe(true);
-
-
