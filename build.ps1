@@ -4,6 +4,17 @@ function Get-ScriptDirectory
    Split-Path $Invocation.MyCommand.Path
 }
 
+$nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
+
+# ensure all packages are installed
+
+git clean -xdf
+
+$config = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\packages.config
+$solution_dir = Join-Path (Get-ScriptDirectory) src
+
+. $nuget install .\src\Reactive.EventAggregator\packages.config -solutionDir $solution_dir 
+
 # build the solution from scratch
 $version = "v4.0.30319"
 $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
@@ -12,7 +23,6 @@ $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
 
 # package it up
 
-$nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
 $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 
 . $nuget pack $nuspec
