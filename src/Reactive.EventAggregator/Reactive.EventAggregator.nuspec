@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Reactive.EventAggregator</id>
-    <version>1.0.2-preview</version>
+    <version>1.0.2</version>
     <title>Reactive.EventAggregator</title>
     <authors>José F. Romaniello, Brendan Forster</authors>
     <owners>Brendan Forster</owners>
@@ -10,33 +10,9 @@
     <description>A portable EventAggregator based on Rx for .NET 4.0+, Silverlight 4/5, WP7/8 and Windows Store Apps!</description>
     <copyright>Copyright © 2013</copyright>
     <dependencies>
-      <group targetFramework="windowsphone8">
-        <dependency id="Rx-Linq" version="2.0.21103" />
-      </group>
-
-      <group targetFramework="net40">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
-
-      <group targetFramework="net45">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
-
-      <group targetFramework="Portable-Net45+WinRT45">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
-
-      <group targetFramework="SL4-WindowsPhone71">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
-
-      <group targetFramework="SL5">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
-
-      <group targetFramework="windows8">
-        <dependency id="Rx-Linq" version="2.0.21114" />
-      </group>
+      
+      <dependency id="Rx-Linq" version="2.0.21114" />
+      
     </dependencies>
    
   </metadata>

@@ -8,8 +8,6 @@ $nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
 
 # ensure all packages are installed
 
-git clean -xdf
-
 $config = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\packages.config
 $solution_dir = Join-Path (Get-ScriptDirectory) src
 
