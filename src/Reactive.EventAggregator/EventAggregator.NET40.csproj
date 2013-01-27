@@ -7,8 +7,8 @@
     <ProjectGuid>{FFA334F7-C563-4CD0-B369-42041DB0698E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventAggregator.Net4</RootNamespace>
-    <AssemblyName>EventAggregator.Net4</AssemblyName>
+    <RootNamespace>Reactive.EventAggregator</RootNamespace>
+    <AssemblyName>Reactive.EventAggregator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
