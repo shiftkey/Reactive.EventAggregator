@@ -48,6 +48,7 @@ Which generates these profiles:
 
 And that's it!
 
+**Footnote:** You may notice the lack of WP8 in that list - when NuGet cannot find a specific `windowsphone8` profile in a package, it will fall back to the Windows Phone 7.1 (Mango) profile `SL4-WindowsPhone71` instead. I tested `Rx-Linq` and `Reactive.EventAggregator` in the WP8 simulator and didn't spot any issues. Please log an issue here if you find something odd.
 
 ### Usage
 
