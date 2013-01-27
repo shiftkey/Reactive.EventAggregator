@@ -66,7 +66,7 @@ Here's some samples:
 
     // act
     eventPublisher.GetEvent<SampleEvent>()
-        .Subscribe(se => eventWasRaised = true);
+                  .Subscribe(se => eventWasRaised = true);
 
     eventPublisher.Publish(new SampleEvent());
     
@@ -97,8 +97,8 @@ Here's some samples:
 
     // act
     eventPublisher.GetEvent<SampleEvent>()
-        .Where(se => se.Status == 1)
-        .Subscribe(se => eventWasRaised = true);
+                  .Where(se => se.Status == 1)
+                  .Subscribe(se => eventWasRaised = true);
 
     eventPublisher.Publish(new SampleEvent { Status = 1 });
 
