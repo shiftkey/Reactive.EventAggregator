@@ -38,25 +38,27 @@
         <dependency id="Rx-Linq" version="2.0.21114" />
       </group>
     </dependencies>
-    <files>
+   
+  </metadata>
+
+   <files>
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\net40" />
-      <file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\net40" />
+      <!--<file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\net40" />-->
 
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\net45" />
-      <file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\net45" />
+      <!--<file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\net45" />-->
 
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Portable-Net45+WinRT45" />
-      <file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\Portable-Net45+WinRT45" />
+      <!--<file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\Portable-Net45+WinRT45" />-->
 
       <file src="bin\SL4-WindowsPhone71\Release\Reactive.EventAggregator.dll" target="lib\SL4-WindowsPhone71" />
-      <file src="bin\SL4-WindowsPhone71\Release\Reactive.EventAggretator.pdb" target="lib\SL4-WindowsPhone71" />
+      <!--<file src="bin\SL4-WindowsPhone71\Release\Reactive.EventAggretator.pdb" target="lib\SL4-WindowsPhone71" />-->
 
       <file src="bin\SL5\Release\Reactive.EventAggregator.dll" target="lib\SL5" />
-      <file src="bin\SL5\Release\Reactive.EventAggretator.pdb" target="lib\SL5" />
+      <!--<file src="bin\SL5\Release\Reactive.EventAggretator.pdb" target="lib\SL5" />-->
 
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\windows8" />
-      <file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\windows8" />
+      <!--<file src="bin\Portable\Release\Reactive.EventAggretator.pdb" target="lib\windows8" />-->
 
     </files>
-  </metadata>
 </package>

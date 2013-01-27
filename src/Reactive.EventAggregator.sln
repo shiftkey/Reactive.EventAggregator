@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.Portable", "Reactive.EventAggregator\EventAggregator.Portable.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
 	ProjectSection(ProjectDependencies) = postProject
+		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A} = {7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}
 		{7A8B2CC0-A64B-4FF7-A69A-2F92BA0D0BC6} = {7A8B2CC0-A64B-4FF7-A69A-2F92BA0D0BC6}
 		{F3B926C1-8059-48B8-AF34-FDB58726C786} = {F3B926C1-8059-48B8-AF34-FDB58726C786}
 	EndProjectSection
