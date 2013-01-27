@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Reactive.EventAggregator</id>
+    <version>1.0.2.0</version>
+    <title>Reactive.EventAggregator</title>
+    <authors>Brendan</authors>
+    <owners>Brendan</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright ©  2012</copyright>
+    <dependencies>
+      <group targetFramework="windowsphone8">
+        <dependency id="Rx-Linq" version="2.0.21103" />
+      </group>
+
+      <group targetFramework="net40">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+
+      <group targetFramework="net45">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+
+      <group targetFramework="Portable-Net45+WinRT45">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+
+      <group targetFramework="SL4-WindowsPhone71">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+
+      <group targetFramework="SL5">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+
+      <group targetFramework="windows8">
+        <dependency id="Rx-Linq" version="2.0.21114" />
+      </group>
+    </dependencies>
+    <files>
+      <file src="bin\Release\Reactive.EventAggregator.dll" target="lib\net40" />
+      <file src="bin\Release\Reactive.EventAggretator.pdb" target="lib\net40" />
+
+      <file src="bin\Release\Reactive.EventAggregator.dll" target="lib\net45" />
+      <file src="bin\Release\Reactive.EventAggretator.pdb" target="lib\net45" />
+
+    </files>
+  </metadata>
+</package>
