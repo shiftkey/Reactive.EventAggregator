@@ -20,7 +20,11 @@ Three reasons:
 
 I use this project as an excuse to investigate how to use PCL with NuGet, but hit some issues which made the experience less-than-appealing.
 
-To start with, NuGet supports installing packages into PCL projects, it is limited to these profiles:
+Yes, NuGet supports installing packages into PCL projects. 
+
+No, not all of possible permutations of profiles.
+
+At the moment it is limited to these profiles:
 
  - `portable-windows8+net45` - a small profile encompassing  the modern APIs
  - `portable-sl4+wp71+windows8` - the biggest range of profiles, and thus the smallest set of available APIs
