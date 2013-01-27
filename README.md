@@ -28,8 +28,8 @@ To start with, NuGet supports installing packages into PCL projects, it is limit
 Why does this matter? Because if you try and install something from NuGet into a PCL project, you'll probably see an error like this:
 
     Could not install package 'Rx-Interfaces 2.0.21114'. You are trying to install this package into a project that targets 
-    'portable-win+net45+sl50+wp80', but the package does not contain any assembly references or content files that are compatible
-    with that framework. For more information, contact the package author.
+    'portable-win+net45+sl50+wp80', but the package does not contain any assembly references or content files that are 
+    compatible with that framework. For more information, contact the package author.
 
 Hopefully in a future version of NuGet it gets better at indicating to the user which PCL profiles a package supports - so that it doesn't even show you these incompatible packages...
 
