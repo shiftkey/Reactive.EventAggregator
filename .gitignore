@@ -11,3 +11,5 @@ TestResults
 *.suo
 
 *ncrunch*
+
+*.nupkg
