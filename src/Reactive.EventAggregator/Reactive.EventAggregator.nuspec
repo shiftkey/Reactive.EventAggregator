@@ -18,7 +18,7 @@
   </metadata>
 
    <files>
-      <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Net40" />
+      <file src="bin\Net40\Release\Reactive.EventAggregator.dll" target="lib\Net40" />
 
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Net45" />
 
