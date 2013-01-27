@@ -11,6 +11,45 @@ Three reasons:
  - It should be on NuGet
  - Using it as a demonstration of Portable Class Libaries and targetting different platforms from the one codebase.
 
+### Portable Class Libraries And Upstream Dependencies
+
+I use this project as an excuse to investigate how to use PCL with NuGet, but hit some issues which made the experience less-than-appealing.
+
+So `Rx-Linq` is a dependency for this package. If you look inside the package for Rx-Linq you see it supports these profiles:
+
+ - Net40
+ - Net45
+ - Portable-Net45-WinRT45
+ - SL4-WindowsPhone71
+ - SL5
+ - WinRT45
+
+And while NuGet supports installing packages into PCL profiles, it is limited to these profiles:
+
+ - portable-windows8+net45 - a small profile encompassing  the modern APIs
+ - portable-sl4+wp71+windows8 - the biggest range of profiles, and thus the smallest set of available APIs
+
+As Rx-Linq only has a library for the first profile, we need to adhere to that profile too.
+
+So this becomes my profile structure:
+
+ - Portable-Net45-WinRT45
+ - Net40
+ - SL4-WindowsPhone71
+ - SL5
+
+Which generates these profiles:
+
+ - Net40
+ - Net45 (reusing portable profile)
+ - Portable-Net45-WinRT45
+ - SL4-WindowsPhone71
+ - SL5
+ - WinRT45 (reusing portable profile)
+
+And that's it!
+
+
 ### Usage
 
 To install it, just run this from the Package Manager Console:
@@ -19,7 +58,7 @@ To install it, just run this from the Package Manager Console:
 
 Here's some samples:
 
-Subscribing to an event
+#### Subscribing to an event
 
     // arrange
     var eventWasRaised = false;
@@ -34,7 +73,7 @@ Subscribing to an event
     // assert
     eventWasRaised.ShouldBe(true);
 
-Disposing of the event
+#### Disposing of the event
 
 	// arrange
     var eventWasRaised = false;
@@ -50,7 +89,7 @@ Disposing of the event
     // assert
     eventWasRaised.ShouldBe(false);
 
-Selectively subscribing to an event
+#### Selectively subscribing to an event
 
     // arrange
     var eventWasRaised = false;
@@ -67,40 +106,3 @@ Selectively subscribing to an event
     eventWasRaised.ShouldBe(true);
 
 
-### Portable Class Libraries What Even Is It
-
-So I used this library as an excuse to investigate how to use PCL with NuGet, but hit some issues which made the experience less-than-appealing.
-
-First off, I was at the mercy of upstream packages - in this case `Rx-Linq`. If you look inside the package for Rx-Linq you see this folder structure:
-
- - Net40
- - Net45
- - Portable-Net45-WinRT45
- - SL4-WindowsPhone71
- - SL5
- - WinRT45
-
-Depending on which PCL profile you choose, NuGet will look for one of these folders:
-
- - portable-windows8+net45
- - portable-sl4+wp71+windows8
-
-As Rx-Linq only has a library for the first profile, we need to adhere to that profile too.
-
-So in the end, this is my project structure:
-
- - Portable-Net45-WinRT45
- - Net40
- - SL4-WindowsPhone71
- - SL5
-
-Which generates these binaries:
-
- - Net40
- - Net45 (reusing portable profile)
- - Portable-Net45-WinRT45
- - SL4-WindowsPhone71
- - SL5
- - WinRT45 (reusing portable profile)
-
-And we're good to go!
