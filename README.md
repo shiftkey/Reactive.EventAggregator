@@ -6,8 +6,8 @@ This is an update of a blog post from José F. Romaniello about using Reactive E
 
 Three reasons:
 
- - I want a lean, mean event aggregator for apps - without taking a dependency on an existing framework
- - It should be on NuGet
+ - I wanted a simple event aggregator, without taking a dependency on an MVVM framework
+ - It should be available on NuGet
  - Demonstrating Portable Class Libaries and targetting different platforms from one codebase
 
 ### Portable Class Libraries And Upstream Dependencies
