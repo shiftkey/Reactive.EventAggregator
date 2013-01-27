@@ -22,7 +22,7 @@ I use this project as an excuse to investigate how to use PCL with NuGet, but hi
 
 Yes, NuGet supports installing packages into PCL projects. 
 
-No, not all of possible permutations of profiles.
+No, not all possible permutations of profiles.
 
 At the moment it is limited to these profiles:
 
