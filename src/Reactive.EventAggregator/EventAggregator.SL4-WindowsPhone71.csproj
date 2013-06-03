@@ -46,13 +46,13 @@
     <Reference Include="Microsoft.Phone" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.0.21114\lib\SL4-WindowsPhone71\System.Reactive.Core.dll</HintPath>
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\SL4-WindowsPhone71\System.Reactive.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.0.21114\lib\SL4-WindowsPhone71\System.Reactive.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\SL4-WindowsPhone71\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.0.21114\lib\SL4-WindowsPhone71\System.Reactive.Linq.dll</HintPath>
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\SL4-WindowsPhone71\System.Reactive.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
