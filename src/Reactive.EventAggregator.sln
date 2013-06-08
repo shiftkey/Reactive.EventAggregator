@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.SL5", "Reac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.NET40", "Reactive.EventAggregator\EventAggregator.NET40.csproj", "{FFA334F7-C563-4CD0-B369-42041DB0698E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.NET45", "EventAggregator.NET45\EventAggregator.NET45.csproj", "{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,14 @@ Global
 		{FFA334F7-C563-4CD0-B369-42041DB0698E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFA334F7-C563-4CD0-B369-42041DB0698E}.Release|ARM.ActiveCfg = Release|Any CPU
 		{FFA334F7-C563-4CD0-B369-42041DB0698E}.Release|x86.ActiveCfg = Release|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{65DD1761-BA67-4E0C-9587-2E2E58BCFECA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
