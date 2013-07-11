@@ -4,7 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.Portable", "Reactive.EventAggregator\EventAggregator.Portable.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A} = {7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}
-		{F3B926C1-8059-48B8-AF34-FDB58726C786} = {F3B926C1-8059-48B8-AF34-FDB58726C786}
 		{FFA334F7-C563-4CD0-B369-42041DB0698E} = {FFA334F7-C563-4CD0-B369-42041DB0698E}
 	EndProjectSection
 EndProject
@@ -16,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1130C9
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.SL4-WindowsPhone71", "Reactive.EventAggregator\EventAggregator.SL4-WindowsPhone71.csproj", "{F3B926C1-8059-48B8-AF34-FDB58726C786}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.SL5", "Reactive.EventAggregator\EventAggregator.SL5.csproj", "{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}"
 EndProject
@@ -49,14 +46,6 @@ Global
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|ARM.ActiveCfg = Release|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|x86.ActiveCfg = Release|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Release|ARM.ActiveCfg = Release|Any CPU
-		{F3B926C1-8059-48B8-AF34-FDB58726C786}.Release|x86.ActiveCfg = Release|Any CPU
 		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}.Debug|ARM.ActiveCfg = Debug|Any CPU

@@ -2,33 +2,24 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Reactive.EventAggregator</id>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
     <title>Reactive.EventAggregator</title>
     <authors>José F. Romaniello, Brendan Forster</authors>
     <owners>Brendan Forster</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A portable EventAggregator based on Rx for .NET 4.0+, Silverlight 4/5, WP7/8 and Windows Store Apps!</description>
+    <description>A portable EventAggregator based on Rx for .NET 4.0+, WP8 and Windows Store Apps</description>
     <copyright>Copyright © 2013</copyright>
     <dependencies>
-      
-      <dependency id="Rx-Linq" version="2.0.21114" />
-      
+      <dependency id="Rx-Linq" version="2.1.30214.0" />
     </dependencies>
-   
   </metadata>
 
    <files>
       <file src="bin\Net40\Release\Reactive.EventAggregator.dll" target="lib\Net40" />
-
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Net45" />
-
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Portable-Net45+WinRT45" />
-
-      <file src="bin\SL4-WindowsPhone71\Release\Reactive.EventAggregator.dll" target="lib\SL4-WindowsPhone71" />
-
+      <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\Portable-Net45+wp80+win" />
       <file src="bin\SL5\Release\Reactive.EventAggregator.dll" target="lib\SL5" />
-
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\windows8" />
-
     </files>
 </package>
