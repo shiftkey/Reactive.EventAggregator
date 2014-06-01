@@ -23,4 +23,10 @@ $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
 
 $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 
-. $nuget pack $nuspec
+$nugetVersion = $env:APPVEYOR_BUILD_NUMBER
+if ($nugetVersion -eq "")
+{
+   $nugetVersion = "1.1.0"
+}
+
+. $nuget pack $nuspec -Version $env:APPVEYOR_BUILD_NUMBER
