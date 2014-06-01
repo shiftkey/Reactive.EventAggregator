@@ -11,7 +11,7 @@ $nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
 $config = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\packages.config
 $solution_dir = Join-Path (Get-ScriptDirectory) src
 
-. $nuget install .\src\Reactive.EventAggregator\packages.config -solutionDir $solution_dir 
+. $nuget restore .\src\Reactive.EventAggregator.sln
 
 # build the solution from scratch
 $version = "v4.0.30319"
