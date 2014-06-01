@@ -66,15 +66,6 @@
     <Reference Include="xunit.core">
       <HintPath>..\packages\xunit.core.2.0.0-beta-build2650\lib\portable-net45+win+wpa81+wp80\xunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.runner.msbuild">
-      <HintPath>..\packages\xunit.2.0.0-alpha-build1611\lib\net45\xunit.runner.msbuild.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.runner.tdnet">
-      <HintPath>..\packages\xunit.2.0.0-alpha-build1611\lib\net45\xunit.runner.tdnet.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.runner.utility">
-      <HintPath>..\packages\xunit.2.0.0-alpha-build1611\lib\net45\xunit.runner.utility.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SimpleTests.cs" />

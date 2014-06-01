@@ -2,6 +2,8 @@
 
 This is an update of a blog post from José F. Romaniello about using Reactive Extensions to implement an event aggregator. [source](http://joseoncode.com/2010/04/29/event-aggregator-with-reactive-extensions/)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/b0yt9pn5njghikr2)](https://ci.appveyor.com/project/shiftkey/reactive-eventaggregator)
+
 ### Usage
 
 To install it, just run this from the Package Manager Console:

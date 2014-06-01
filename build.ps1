@@ -11,7 +11,7 @@ $nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
 $config = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\packages.config
 $solution_dir = Join-Path (Get-ScriptDirectory) src
 
-. $nuget install .\src\Reactive.EventAggregator\packages.config -solutionDir $solution_dir 
+. $nuget restore .\src\Reactive.EventAggregator.sln
 
 # build the solution from scratch
 $version = "v4.0.30319"
@@ -23,4 +23,10 @@ $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
 
 $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 
-. $nuget pack $nuspec
+$nugetVersion = $env:APPVEYOR_BUILD_VERSION 
+if ($nugetVersion -eq "")
+{
+   $nugetVersion = "1.1.0"
+}
+
+. $nuget pack $nuspec -Version $nugetVersion
