@@ -24,9 +24,9 @@ $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
 $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 
 $nugetVersion = $env:APPVEYOR_BUILD_VERSION 
-if ($nugetVersion -eq "")
+if ($nugetVersion -eq $null)
 {
-   $nugetVersion = "1.1.0"
+   $nugetVersion = "1.2.0"
 }
 
 . $nuget pack $nuspec -Version $nugetVersion
