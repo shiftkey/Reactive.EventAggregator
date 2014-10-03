@@ -26,7 +26,7 @@ $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.
 $nugetVersion = $env:APPVEYOR_BUILD_VERSION 
 if ($nugetVersion -eq $null)
 {
-   $nugetVersion = "1.2.1"
+   $nugetVersion = "2.0.0"
 }
 
 . $nuget pack $nuspec -Version $nugetVersion
