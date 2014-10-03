@@ -8,7 +8,7 @@ namespace Reactive.EventAggregator
     // and http://machadogj.com/2011/3/yet-another-event-aggregator-using-rx.html
     public class EventAggregator : IEventAggregator
     {
-        readonly ISubject<object> subject = new Subject<object>();
+        readonly Subject<object> subject = new Subject<object>();
 
         public IObservable<TEvent> GetEvent<TEvent>()
         {
@@ -18,6 +18,26 @@ namespace Reactive.EventAggregator
         public void Publish<TEvent>(TEvent sampleEvent)
         {
             subject.OnNext(sampleEvent);
+        }
+
+        bool disposed;
+
+        //Implement IDisposable.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) return;
+
+            if (disposing)
+            {
+                subject.Dispose();
+            }
+            disposed = true;
         }
     }
 }
