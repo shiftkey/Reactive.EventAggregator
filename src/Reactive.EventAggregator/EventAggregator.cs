@@ -22,21 +22,17 @@ namespace Reactive.EventAggregator
 
         bool disposed;
 
-        //Implement IDisposable.
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
         {
             if (disposed) return;
 
-            if (disposing)
-            {
-                subject.Dispose();
-            }
+            subject.Dispose();
+
             disposed = true;
         }
     }
