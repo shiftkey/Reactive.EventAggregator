@@ -20,9 +20,24 @@ namespace Reactive.EventAggregator
             subject.OnNext(sampleEvent);
         }
 
+        bool disposed;
+
+        //Implement IDisposable.
         public void Dispose()
         {
-            subject.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) return;
+
+            if (disposing)
+            {
+                subject.Dispose();
+            }
+            disposed = true;
         }
     }
 }
