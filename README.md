@@ -1,4 +1,4 @@
-﻿## Reactive.EventAggreator
+﻿## Reactive.EventAggregator
 
 This is an update of a blog post from José F. Romaniello about using Reactive Extensions to implement an event aggregator. [source](http://joseoncode.com/2010/04/29/event-aggregator-with-reactive-extensions/)
 
