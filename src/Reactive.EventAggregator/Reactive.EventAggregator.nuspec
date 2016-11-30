@@ -15,7 +15,6 @@
   </metadata>
 
    <files>
-      <file src="bin\Net40\Release\Reactive.EventAggregator.dll" target="lib\net40" />
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\net45" />
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\portable-Net45+winrt45+wp8+wpa81" />
       <file src="bin\Portable\Release\Reactive.EventAggregator.dll" target="lib\portable-win81+wpa81" />
