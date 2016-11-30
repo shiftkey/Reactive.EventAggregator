@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.Portable", "Reactive.EventAggregator\EventAggregator.Portable.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7C2E2E83-39C0-45CE-BA4C-151C25C3C40A} = {7C2E2E83-39C0-45CE-BA4C-151C25C3C40A}
