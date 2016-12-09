@@ -4,7 +4,7 @@ function Get-ScriptDirectory
    Split-Path $Invocation.MyCommand.Path
 }
 
-$nuget = Join-Path (Get-ScriptDirectory) src\.nuget\NuGet.exe
+$nuget = nuget.exe
 
 # ensure all packages are installed
 
@@ -23,7 +23,7 @@ $sln = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator.sln
 
 $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 
-$nugetVersion = $env:APPVEYOR_BUILD_VERSION 
+$nugetVersion = $env:APPVEYOR_BUILD_VERSION
 if ($nugetVersion -eq $null)
 {
    $nugetVersion = "2.0.0"
