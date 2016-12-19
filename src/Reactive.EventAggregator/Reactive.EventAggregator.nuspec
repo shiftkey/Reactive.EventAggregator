@@ -10,7 +10,7 @@
     <description>A portable EventAggregator based on Rx for .NET 4.0+, WP8 and Windows Store Apps</description>
     <copyright>Copyright © 2013</copyright>
     <dependencies>
-      <dependency id="Rx-Linq" version="2.2.5" />
+      <dependency id="System.Reactive.Linq" version="[3.0.0,4.0.0)" />
     </dependencies>
   </metadata>
 
