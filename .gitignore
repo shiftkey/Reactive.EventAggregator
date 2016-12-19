@@ -13,3 +13,6 @@ TestResults
 *ncrunch*
 
 *.nupkg
+
+# CAKE build tools
+tools
