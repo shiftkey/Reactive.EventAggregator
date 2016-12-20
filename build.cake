@@ -78,7 +78,7 @@ Task("Package")
       new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/windowsphone8" },
     },
     BasePath                = "./src/Reactive.EventAggregator/bin/Portable/" + configuration + "/",
-    OutputDirectory         = "./nuget"
+    OutputDirectory         = "./"
   };
 
 NuGetPack("./src/Reactive.EventAggregator/Reactive.EventAggregator.nuspec", nuGetPackSettings);
