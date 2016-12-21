@@ -1,22 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.Portable", "Reactive.EventAggregator\EventAggregator.Portable.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactive.EventAggregator.Tests", "Reactive.EventAggregator.Tests\Reactive.EventAggregator.Tests.csproj", "{07BF7AB0-9B7A-441E-BA11-067F574B35DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1130C9DC-B421-447C-A173-C551C8E12297}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A944316B-3717-4182-9FCC-F4C513274CE9}"
 	ProjectSection(SolutionItems) = preProject
+		..\build.cake = ..\build.cake
 		Reactive.EventAggregator\Reactive.EventAggregator.nuspec = Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 	EndProjectSection
 EndProject
