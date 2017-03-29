@@ -1,0 +1,14 @@
+image: Visual Studio 2017
+
+skip_branch_with_pr: true
+
+cache:
+  - tools -> build.ps1
+
+build_script: 
+  - ps: .\build.ps1
+
+test: off
+
+artifacts:
+  - path: '**\*.nupkg'
