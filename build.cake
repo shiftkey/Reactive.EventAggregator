@@ -34,18 +34,8 @@ Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
-    if(IsRunningOnWindows())
-    {
-      // Use MSBuild
-      MSBuild("./src/Reactive.EventAggregator.sln", settings =>
-        settings.SetConfiguration(configuration));
-    }
-    else
-    {
-      // Use XBuild
-      XBuild("./src/Reactive.EventAggregator.sln", settings =>
-        settings.SetConfiguration(configuration));
-    }
+    MSBuild("./src/Reactive.EventAggregator.sln", settings =>
+	    settings.SetConfiguration(configuration));
 });
 
 Task("Run-Unit-Tests")
@@ -56,13 +46,23 @@ Task("Run-Unit-Tests")
 });
 
 
+Task("Pack")
+    .IsDependentOn("Run-Unit-Tests")
+	.Does(() =>
+{
+	// Use MSBuild
+	MSBuild("./src/Reactive.EventAggregator/Reactive.EventAggregator.csproj", settings =>
+        settings.SetConfiguration(configuration)
+			.WithTarget("Pack"));
+});
+
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Run-Unit-Tests");
+    .IsDependentOn("Pack");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
