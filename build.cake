@@ -61,7 +61,7 @@ Task("Package")
 {
   var nuGetPackSettings   = new NuGetPackSettings
   {
-    Version                 = "3.0.0-preview2",
+    Version                 = "3.0.0",
     ProjectUrl              = new Uri("https://github.com/shiftkey/Reactive.EventAggregator/"),
     // TODO: an icon?
     //IconUrl                 = new Uri("http://cdn.rawgit.com/SomeUser/TestNuget/master/icons/testnuget.png"),
