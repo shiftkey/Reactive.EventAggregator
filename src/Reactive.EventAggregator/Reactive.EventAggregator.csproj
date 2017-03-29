@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.0;netstandard1.3;net45</TargetFrameworks>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <Authors>José F. Romaniello, Brendan Forster</Authors>
+    <Version>3.1.0</Version>
+    <PackageLicenseUrl>http://opensource.org/licenses/mit</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/shiftkey/Reactive.EventAggregator</PackageProjectUrl>
+    <MinClientVersion>2.12</MinClientVersion>
+    <Description>A portable EventAggregator based on Rx for .NET 4.5+ and .NET Standard</Description>
+    <IncludeSymbols>true</IncludeSymbols>
+    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform " Version="5.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+</Project>

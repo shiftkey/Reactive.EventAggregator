@@ -55,41 +55,14 @@ Task("Run-Unit-Tests")
     XUnit2("./src/**/bin/" + configuration + "/*.Tests.dll");
 });
 
-Task("Package")
-    .IsDependentOn("Run-Unit-Tests")
-    .Does(() => 
-{
-  var nuGetPackSettings   = new NuGetPackSettings
-  {
-    Version                 = "3.0.0",
-    ProjectUrl              = new Uri("https://github.com/shiftkey/Reactive.EventAggregator/"),
-    // TODO: an icon?
-    //IconUrl                 = new Uri("http://cdn.rawgit.com/SomeUser/TestNuget/master/icons/testnuget.png"),
-    LicenseUrl              = new Uri("https://github.com/shiftkey/Reactive.EventAggregator/blob/master/LICENSE.md"),
-    Symbols                 = false,
-    NoPackageAnalysis       = true,
-    Files                   = new [] 
-    {
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/net45" },
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/portable-Net45+winrt45+wp8+wpa81" },
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/portable-win81+wpa81" },
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/portable-windows8+net45+wp8" },
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/windows8" },
-      new NuSpecContent { Source = "Reactive.EventAggregator.dll", Target = "lib/windowsphone8" },
-    },
-    BasePath                = "./src/Reactive.EventAggregator/bin/Portable/" + configuration + "/",
-    OutputDirectory         = "./"
-  };
 
-NuGetPack("./src/Reactive.EventAggregator/Reactive.EventAggregator.nuspec", nuGetPackSettings);
-});
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Package");
+    .IsDependentOn("Run-Unit-Tests");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

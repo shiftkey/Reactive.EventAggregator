@@ -1,17 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator.Portable", "Reactive.EventAggregator\EventAggregator.Portable.csproj", "{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactive.EventAggregator.Tests", "Reactive.EventAggregator.Tests\Reactive.EventAggregator.Tests.csproj", "{07BF7AB0-9B7A-441E-BA11-067F574B35DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A944316B-3717-4182-9FCC-F4C513274CE9}"
 	ProjectSection(SolutionItems) = preProject
 		..\build.cake = ..\build.cake
-		Reactive.EventAggregator\Reactive.EventAggregator.nuspec = Reactive.EventAggregator\Reactive.EventAggregator.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactive.EventAggregator", "Reactive.EventAggregator\Reactive.EventAggregator.csproj", "{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +22,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Release|ARM.ActiveCfg = Release|Any CPU
-		{2D95BF1E-A01E-4DB8-ACB4-5EBDFB2B0AF0}.Release|x86.ActiveCfg = Release|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -39,6 +30,18 @@ Global
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|ARM.ActiveCfg = Release|Any CPU
 		{07BF7AB0-9B7A-441E-BA11-067F574B35DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|ARM.Build.0 = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA3BF39A-923F-4ED0-8CFA-FE7C37788ACB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
