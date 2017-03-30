@@ -35,7 +35,7 @@ Task("Build")
     .Does(() =>
 {
     MSBuild("./src/Reactive.EventAggregator.sln", settings =>
-	    settings.SetConfiguration(configuration));
+        settings.SetConfiguration(configuration));
 });
 
 Task("Run-Unit-Tests")
@@ -46,14 +46,13 @@ Task("Run-Unit-Tests")
 });
 
 
-Task("Pack")
+Task("Package")
     .IsDependentOn("Run-Unit-Tests")
-	.Does(() =>
+    .Does(() =>
 {
-	// Use MSBuild
-	MSBuild("./src/Reactive.EventAggregator/Reactive.EventAggregator.csproj", settings =>
+    MSBuild("./src/Reactive.EventAggregator/Reactive.EventAggregator.csproj", settings =>
         settings.SetConfiguration(configuration)
-			.WithTarget("Pack"));
+                .WithTarget("Pack"));
 });
 
 
@@ -62,7 +61,7 @@ Task("Pack")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Pack");
+    .IsDependentOn("Package");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
