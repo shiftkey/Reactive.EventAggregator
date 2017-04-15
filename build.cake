@@ -13,6 +13,8 @@ var configuration = Argument("configuration", "Release");
 // Define directories.
 var buildDir = Directory("./src/Reactive.EventAggregator/Reactive.EventAggregator/bin") + Directory(configuration);
 
+var version = EnvironmentVariable("Version") ?? "3.3.0";
+
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +37,8 @@ Task("Build")
     .Does(() =>
 {
     MSBuild("./src/Reactive.EventAggregator.sln", settings =>
-        settings.SetConfiguration(configuration));
+        settings.SetConfiguration(configuration)
+                .WithProperty("Version", version));
 });
 
 Task("Run-Unit-Tests")
@@ -52,7 +55,8 @@ Task("Package")
 {
     MSBuild("./src/Reactive.EventAggregator/Reactive.EventAggregator.csproj", settings =>
         settings.SetConfiguration(configuration)
-                .WithTarget("Pack"));
+                .WithTarget("Pack")
+                .WithProperty("Version", version));
 });
 
 
