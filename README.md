@@ -16,7 +16,7 @@ Three reasons:
 
  - I wanted a simple event aggregator, without taking a dependency on an MVVM framework
  - It should be available on NuGet
- - Demonstrate Portable Class Libaries and targetting different platforms from one codebase
+ - Demonstrate .NET Standard and targetting different platforms from one codebase
 
 ### Samples
 
