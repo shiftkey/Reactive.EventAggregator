@@ -13,7 +13,7 @@ var configuration = Argument("configuration", "Release");
 // Define directories.
 var buildDir = Directory("./src/Reactive.EventAggregator/Reactive.EventAggregator/bin") + Directory(configuration);
 
-var version = EnvironmentVariable("Version") ?? "3.3.0";
+var version = EnvironmentVariable("VERSION") ?? "3.99.99-rc";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
