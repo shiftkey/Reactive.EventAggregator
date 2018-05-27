@@ -6,7 +6,6 @@ packages
 # mstest test results
 TestResults
 
-
 *.csproj.user
 *.suo
 
@@ -16,3 +15,5 @@ TestResults
 
 # CAKE build tools
 tools
+
+.vs/

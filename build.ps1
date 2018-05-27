@@ -202,7 +202,7 @@ $nuspec = Join-Path (Get-ScriptDirectory) src\Reactive.EventAggregator\Reactive.
 $nugetVersion = $env:APPVEYOR_BUILD_VERSION 
 if ($nugetVersion -eq $null)
 {
-   $nugetVersion = "3.0.0-preview"
+   $nugetVersion = "4.0.0"
 }
 
 . $nuget pack $nuspec -Version $nugetVersion
